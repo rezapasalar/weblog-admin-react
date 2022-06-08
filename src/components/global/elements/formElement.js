@@ -3,7 +3,7 @@ import InputEl from './inputElement'
 import TextareaEl from './textareaElement'
 import SelectEl from './selectElement'
 import DataBirthEl from './dateBirthElement'
-import CKEditorEl from './CkEditorElement'
+import CKEditorEl from './ckEditorElement'
 import MultiColumnEl from './multiColumnElement'
 
 export const LabelElement = LabelEl
