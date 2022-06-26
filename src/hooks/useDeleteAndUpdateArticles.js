@@ -1,12 +1,12 @@
-import {useState} from 'react'
-import {useSearchParams} from 'react-router-dom'
-import {useSelector, useDispatch} from 'react-redux'
-import {setArticlesArchive, deleteArticle, setModalStatus, setIdForUpdate, setPagination, resetArticlesState} from '../store/slices/articlesSlice'
-import {SUCCESSFUL_REMOVAL} from '../constants/responsesConstant'
-import {getArticlesService, deleteArticleService} from '../services/articlesService'
+import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { setArticlesArchive, deleteArticle, setModalStatus, setIdForUpdate, setPagination, resetArticlesState } from '../store/slices/articles'
+import { SUCCESSFUL_REMOVAL } from '../constants/responses'
+import { getArticlesService, deleteArticleService } from '../services/articles'
 import swal from '../modules/sweetAlert'
 
-const UseDeleteAndUpdateArticles = (id) => {
+export default function UseDeleteAndUpdateArticles (id) {
 
     const {articlesCurrentPage, filterValue, pagination: {totalCount, pageSize, currentPage}} = useSelector(state => state.articles)
 
@@ -55,5 +55,3 @@ const UseDeleteAndUpdateArticles = (id) => {
 
     return {isSelect, setIsSelect, getIsSubmit, deleteHandler, updateHandler}
 }
-
-export default UseDeleteAndUpdateArticles

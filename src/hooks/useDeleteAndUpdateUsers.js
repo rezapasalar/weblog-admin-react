@@ -1,12 +1,12 @@
-import {useState} from 'react'
-import {useSearchParams} from 'react-router-dom'
-import {useSelector, useDispatch} from 'react-redux'
-import {setUsersArchive, deleteUser, setModalStatus, setIdForUpdate, setPagination, resetUsersState} from '../store/slices/usersSlice'
-import {SUCCESSFUL_REMOVAL} from '../constants/responsesConstant'
-import {getUsersService, deleteUserService} from '../services/usersService'
+import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { setUsersArchive, deleteUser, setModalStatus, setIdForUpdate, setPagination, resetUsersState } from '../store/slices/users'
+import { SUCCESSFUL_REMOVAL } from '../constants/responses'
+import { getUsersService, deleteUserService } from '../services/users'
 import swal from '../modules/sweetAlert'
 
-const UseDeleteAndUpdateUsers = (id) => {
+export default function UseDeleteAndUpdateUsers (id) {
 
     const {usersCurrentPage, filterValue, pagination: {totalCount, pageSize, currentPage}} = useSelector(state => state.users)
 
@@ -55,5 +55,3 @@ const UseDeleteAndUpdateUsers = (id) => {
 
     return {isSelect, setIsSelect, getIsSubmit, deleteHandler, updateHandler}
 }
-
-export default UseDeleteAndUpdateUsers

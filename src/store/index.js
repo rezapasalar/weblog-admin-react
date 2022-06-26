@@ -1,8 +1,8 @@
-import {configureStore} from '@reduxjs/toolkit'
-import globalReducer from './slices/globalSlice'
-import usersReducer from './slices/usersSlice'
-import articlesReducer from './slices/articlesSlice'
-import todosReducer from './slices/todosSlice'
+import { configureStore } from '@reduxjs/toolkit'
+import globalReducer from './slices/global'
+import usersReducer from './slices/users'
+import articlesReducer from './slices/articles'
+import todosReducer from './slices/todos'
 
 export const store = configureStore({
     reducer: {

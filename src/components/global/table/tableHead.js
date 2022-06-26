@@ -1,6 +1,6 @@
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
-const TableHead = ({titles, slice, setIsSelectAll, setSelectedRows, bgColor = 'bg-gray-200 dark:bg-gray-900', textColor = 'text-gray-500 dark:text-white'}) => {
+export default function TableHead ({titles, slice, setIsSelectAll, setSelectedRows, bgColor = 'bg-gray-200 dark:bg-gray-900', textColor = 'text-gray-500 dark:text-white'}) {
 
     const {isSelectAll} = useSelector(state => state[slice])
 
@@ -24,5 +24,3 @@ const TableHead = ({titles, slice, setIsSelectAll, setSelectedRows, bgColor = 'b
         </thead>
     )
 }
-
-export default TableHead

@@ -1,12 +1,12 @@
-import {useState} from 'react'
-import {useSearchParams} from 'react-router-dom'
-import {useSelector, useDispatch} from 'react-redux'
-import {setTodosArchive, deleteTodo, setModalStatus, setIdForUpdate, toggleDoneTodo, setPagination, resetTodosState} from '../store/slices/todosSlice'
-import {SUCCESSFUL_REMOVAL} from '../constants/responsesConstant'
-import {getTodosService, deleteTodoService, updateTodoService} from '../services/todosService'
+import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { setTodosArchive, deleteTodo, setModalStatus, setIdForUpdate, toggleDoneTodo, setPagination, resetTodosState } from '../store/slices/todos'
+import { SUCCESSFUL_REMOVAL } from '../constants/responses'
+import { getTodosService, deleteTodoService, updateTodoService } from '../services/todos'
 import swal from '../modules/sweetAlert'
 
-const UseDeleteAndUpdateTodos = (id) => {
+export default function UseDeleteAndUpdateTodos (id) {
 
     const {todosCurrentPage: todos, filterValue, pagination: {totalCount, pageSize, currentPage}} = useSelector(state => state.todos)
 
@@ -18,7 +18,7 @@ const UseDeleteAndUpdateTodos = (id) => {
 
     const [, setSearchParams] = useSearchParams()
 
-    const getIsSubmit = (value) => isSubmit === value ? value : isSubmit !== '' ? 'false' : ''
+    const getIsSubmit = (value) => isSubmit === value ? false : isSubmit !== '' ? 'false' : ''
 
     const deleteHandler = async () => {
         try {
@@ -66,5 +66,3 @@ const UseDeleteAndUpdateTodos = (id) => {
 
     return {isSelect, setIsSelect, getIsSubmit, deleteHandler, toggleDoneHandler, updateHandler}
 }
-
-export default UseDeleteAndUpdateTodos

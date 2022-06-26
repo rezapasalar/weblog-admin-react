@@ -26,11 +26,16 @@
   border-radius: 0 0 0.375rem 0.375rem;
 }
 
+.ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline,
+.ck-focused.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+  background-color: rgb(249 250 251)
+}
+
 .ck-dark .ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline,
 .ck-dark .ck-focused.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
-    background-color: rgb(31 41 55);
-    border-style: none;
-    color: white
+  background-color: rgb(31 41 55);
+  border-style: none;
+  color: white
 }
 
 button, select {

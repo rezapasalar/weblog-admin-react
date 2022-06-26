@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import { useState } from 'react'
 
-const UseForm = (initialData) => {
+export default function UseForm (initialData) {
     
     const [data, setData] = useState(initialData)
 
@@ -20,5 +20,3 @@ const UseForm = (initialData) => {
 
     return {data, setData, errors, setErrors, mapYupErrors, isSubmit, setIsSubmit, inputHandler}
 }
-
-export default UseForm

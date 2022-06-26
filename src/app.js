@@ -1,16 +1,16 @@
-import {lazy, Suspense} from 'react'
-import {Routes, Route, Navigate} from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import MasterLayouts from './components/layouts/masterLayouts'
-import SuspenseLoading from './components/global/loadings/suspenseLoading'
+import SuspenseLoading from './components/global/loadings/suspense'
 
-const LoginPage = lazy(() => import('./pages/loginPage'))
-const DashboardPage = lazy(() => import('./pages/dashboardPage'))
-const UsersPage = lazy(() => import('./pages/usersPage'))
-const ArticlesPage = lazy(() => import('./pages/articlesPage'))
-const TodosPage = lazy(() => import('./pages/todosPage'))
-const ProfilePage = lazy(() => import('./pages/profilePage'))
-const SettingPage = lazy(() => import('./pages/settingPage'))
-const NotificationsPage = lazy(() => import('./pages/notificationsPage'))
+const LoginPage = lazy(() => import('./pages/login'))
+const DashboardPage = lazy(() => import('./pages/dashboard'))
+const UsersPage = lazy(() => import('./pages/users'))
+const ArticlesPage = lazy(() => import('./pages/articles'))
+const TodosPage = lazy(() => import('./pages/todos'))
+const ProfilePage = lazy(() => import('./pages/profile'))
+const SettingPage = lazy(() => import('./pages/setting'))
+const NotificationsPage = lazy(() => import('./pages/notifications'))
 
 const App = () => (
     <Routes>

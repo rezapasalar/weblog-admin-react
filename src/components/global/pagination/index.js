@@ -1,5 +1,5 @@
-import {useSearchParams} from 'react-router-dom'
-import {usePagination, DOTS} from './usePagination'
+import { useSearchParams } from 'react-router-dom'
+import { usePagination, DOTS } from './usePagination'
 
 const Pagination = ({onPageChange, totalCount, siblingCount = 1, currentPage, pageSize, filter = 'all'}) => {
 

@@ -1,4 +1,4 @@
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 /**
  * This class is responsible for managing the removal and recording of information in local storage.

@@ -1,12 +1,12 @@
-import {useEffect, useRef} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {setIsShowSidebar} from '../../store/slices/globalSlice'
-import NavbarLayout from './sections/navbarLayout'
-import SidebarLayout from './sections/sidebarLayout'
-import FooterLayout from './sections/footerLayout'
-import FullElementLoading from '../global/loadings/fullElementLoading'
+import { useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setIsShowSidebar } from '../../store/slices/global'
+import Navbar from './sections/navbar'
+import Sidebar from './sections/sidebar'
+import Footer from './sections/footer'
+import FullElementLoading from '../global/loadings/fullElement'
 
-const MasterPage = ({children}) => {
+export default function MasterPage ({children}) {
 
     const {isShowSidebar, isLoading} = useSelector(state => state.global)
 
@@ -49,25 +49,23 @@ const MasterPage = ({children}) => {
     return (
         <div className="animate-slow-1000 select-none">
 
-            <SidebarLayout />
+            <Sidebar />
 
             <div ref={backDarkRef} onClick={() => dispatch(setIsShowSidebar(false))} className="fixed inset-0 z-10 bg-gray-500/50 dark:bg-gray-900/50 lg:hidden"></div>
 
             <div ref={workSpaceRef} className="relative duration-500">
                 
-                <NavbarLayout />
+                <Navbar />
 
                 <main className="relative container-fluid mx-auto py-6 px-4 md:px-6 mt-[60px] min-h-[calc(100vh-116px)]">
                     {children}
                     {isLoading ? <FullElementLoading /> : null}
                 </main>
 
-                <FooterLayout />
+                <Footer />
 
             </div>
 
         </div>
     )
 }
-
-export default MasterPage
