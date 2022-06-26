@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import useForm from '../../hooks/useForm'
 import { setTodosArchive, updateTodo, setModalStatus, setIdForUpdate, setFilterValue, setPagination, resetTodosState } from '../../store/slices/todos'
 import { initialData, todoSchema } from '../../schemas/todo'
 import { FORM_ERRORS, AXIOS_ERROR, SUCCESSFUL_OPERATION } from '../../constants/responses'
 import Modal from '../global/modal/main'
 import { InputForm, ButtonLoading, HeaderForm, FooterForm } from '../global/form'
-import swal from '../../modules/sweetAlert'
 import { getTodosService, createTodoService, updateTodoService } from '../../services/todos'
+import { getTheme } from '../../modules/helperFunctions'
 
  export default function FormTodos () {
 
@@ -37,11 +38,11 @@ import { getTodosService, createTodoService, updateTodoService } from '../../ser
             await todoSchema().validate(data, {abortEarly: false})
             idForUpdate ? await update() : await insert()
             cancelHandler()
-            swal.toast('success', SUCCESSFUL_OPERATION)
+            toast.success(SUCCESSFUL_OPERATION, {...getTheme()})
         } catch (errors) {
-            if (errors?.name === 'AxiosError') return swal.toast('error', AXIOS_ERROR)
+            if (errors?.name === 'AxiosError') return toast.error(AXIOS_ERROR, {...getTheme()})
             setErrors(mapYupErrors(errors))
-            swal.toast('error', FORM_ERRORS)
+            toast.error(FORM_ERRORS, {...getTheme()})
         } finally {
             setIsSubmit('')
         }

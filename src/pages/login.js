@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { ColumnGridWrap, InputForm } from '../components/global/form'
-import swal from '../modules/sweetAlert'
+import { SUCCESSFUL_LOGIN } from '../constants/responses'
+import { getTheme } from '../modules/helperFunctions'
 
 export default function LoginPage () {
 
@@ -15,7 +17,7 @@ export default function LoginPage () {
 
     const submitHandler = () => {
         localStorage.auth = 'true'
-        swal.toast('success', 'ورود با موفقیت انجام شد')
+        toast.success(SUCCESSFUL_LOGIN, {...getTheme()})
         navigate('/admin/dashboard')
     }
 

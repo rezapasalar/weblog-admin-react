@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
 import { setArticlesArchive, deleteArticle, setModalStatus, setIdForUpdate, setPagination, resetArticlesState } from '../store/slices/articles'
 import { SUCCESSFUL_REMOVAL } from '../constants/responses'
 import { getArticlesService, deleteArticleService } from '../services/articles'
 import swal from '../modules/sweetAlert'
+import { getTheme } from '../modules/helperFunctions'
 
 export default function UseDeleteAndUpdateArticles (id) {
 
@@ -31,7 +33,7 @@ export default function UseDeleteAndUpdateArticles (id) {
 
             if (articlesCurrentPage.length > 1) {
                 dispatch(setPagination({pageSize, currentPage, totalCount: totalCount - 1}))
-                swal.toast('success', SUCCESSFUL_REMOVAL)
+                toast.success(SUCCESSFUL_REMOVAL, {...getTheme()})
                 return
             }
 
@@ -41,7 +43,7 @@ export default function UseDeleteAndUpdateArticles (id) {
                 dispatch(resetArticlesState())
                 dispatch(setArticlesArchive({page, data, totalDocs, limit}))
                 setSearchParams({page: currentPage -1, filter: filterValue})
-                swal.toast('success', SUCCESSFUL_REMOVAL)
+                toast.success(SUCCESSFUL_REMOVAL, {...getTheme()})
             }
         } finally {
             setIsSubmit('')

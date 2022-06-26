@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import useForm from '../../hooks/useForm'
 import { setArticlesArchive, updateArticle, setModalStatus, setIdForUpdate, setFilterValue, setPagination, resetArticlesState } from '../../store/slices/articles'
 import { initialData, articleSchema } from '../../schemas/article'
 import { FORM_ERRORS, AXIOS_ERROR, SUCCESSFUL_OPERATION } from '../../constants/responses'
 import Modal from '../global/modal/main'
 import { InputForm, SelectForm, TextAreaForm, CKEditorForm, ColumnGridWrap, ButtonLoading, HeaderForm, FooterForm } from '../global/form'
-import swal from '../../modules/sweetAlert'
 import { getArticlesService, createArticleService, updateArticleService } from '../../services/articles'
+import { getTheme } from '../../modules/helperFunctions'
 
 export default function FormArticles () {
 
@@ -37,11 +38,11 @@ export default function FormArticles () {
             await articleSchema().validate(data, {abortEarly: false})
             idForUpdate ? await update() : await insert()
             cancelHandler()
-            swal.toast('success', SUCCESSFUL_OPERATION)
+            toast.success(SUCCESSFUL_OPERATION, {...getTheme()})
         } catch (errors) {
-            if (errors?.name === 'AxiosError') return swal.toast('error', AXIOS_ERROR)
+            if (errors?.name === 'AxiosError') return toast.error(AXIOS_ERROR, {...getTheme()})
             setErrors(mapYupErrors(errors))
-            swal.toast('error', FORM_ERRORS)
+            toast.error(FORM_ERRORS, {...getTheme()})
         } finally {
             setIsSubmit('')
         }

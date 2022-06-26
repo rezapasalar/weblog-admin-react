@@ -21,3 +21,5 @@ export const createSlug = (str) => {
     str = str.replace(/[^a-z0-9_\s-ءاأإآؤئبتثجحخدذرزسشصضطظعغفقكلمنهويةى]#u/, '').replace(/\s+/g, '-').replace(/-+/g, '-')
     return str
 }
+
+export const getTheme = () => (!('theme' in localStorage) || (localStorage.theme !== 'dark' && localStorage.theme !== 'light')) ? {theme: 'light'} : {theme: localStorage.theme}

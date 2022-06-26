@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import {lazy, Suspense} from 'react'
+import {Routes, Route, Navigate} from 'react-router-dom'
 import MasterLayouts from './components/layouts/masterLayouts'
 import SuspenseLoading from './components/global/loadings/suspense'
 

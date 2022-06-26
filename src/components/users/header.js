@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { setUsersArchive, deleteUser, setModalStatus, setFilterValue } from '../../store/slices/users'
 import { setIsLoading } from '../../store/slices/global'
 import userFactory from '../../modules/dataFactory/user'
@@ -8,6 +9,7 @@ import { getUsersService, deleteUserService } from '../../services/users'
 import { SUCCESSFUL_OPERATION, SUCCESSFUL_REMOVAL } from '../../constants/responses'
 import TitleAndViewType from '../global/titleAndViewType'
 import ButtonElement from '../global/elements/button'
+import { getTheme } from '../../modules/helperFunctions'
 
 export default function HeaderUsers ({viewType, changeViewType}) {
 
@@ -35,7 +37,7 @@ export default function HeaderUsers ({viewType, changeViewType}) {
                 setSearchParams({page: currentPage - 1 > 1 ? currentPage - 1 : 1 , filter: filterValue})
             }
 
-            swal.toast('success', SUCCESSFUL_REMOVAL)
+            toast.success(SUCCESSFUL_REMOVAL, {...getTheme()})
         } finally {
             dispatch(setIsLoading(false))
         }
@@ -57,7 +59,7 @@ export default function HeaderUsers ({viewType, changeViewType}) {
             const {data: {data, meta: {totalDocs, limit, page}}} = await getUsersService()
             dispatch(setUsersArchive({page, data, totalDocs, limit}))
             window.scrollTo({top: 0, behavior: 'smooth'})
-            swal.toast('success', SUCCESSFUL_OPERATION)   
+            toast.success(SUCCESSFUL_OPERATION, {...getTheme()})
         } finally {
             dispatch(setIsLoading(false))
         }

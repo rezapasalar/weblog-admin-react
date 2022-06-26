@@ -3,3 +3,8 @@ export const SUCCESSFUL_OPERATION = 'عملیات با موفقیت انجام �
 export const SUCCESSFUL_REMOVAL = 'حذف با موفقیت انجام شد'
 export const EMPTY_DATA = 'دیتایی یافت نشد'
 export const AXIOS_ERROR = 'خطایی رخ داده است'
+export const RECEIVING_INFO = 'در حال دریافت اطلاعات'
+export const NO_COMMENT = 'هنوز دیدگاهی ثبت نشده'
+export const SUCCESSFUL_LOGIN = 'ورود با موفقیت انجام شد'
+export const SUCCESSFUL_LOGOUT = 'با موفقیت خارج شدید'
+export const SUCCESSFUL_SAVE = 'اطلاعات کاربری ذخیره شد'

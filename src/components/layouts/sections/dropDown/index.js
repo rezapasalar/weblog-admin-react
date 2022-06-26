@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import { setIsShowSidebar } from '../../../../store/slices/global'
 import DropDownItemElement from './item'
-import swal from '../../../../modules/sweetAlert'
 import { MoreSvg, ProfileSvg, SettingSvg, LogoutSvg } from '../../../global/svg'
+import { SUCCESSFUL_LOGOUT } from '../../../../constants/responses'
+import { getTheme } from '../../../../modules/helperFunctions'
 
 export default function DropDown () {
 
@@ -31,7 +33,7 @@ export default function DropDown () {
 
     const logoutHandler = () => {
         localStorage.removeItem('auth')
-        swal.toast('success', 'خروج با موفقیت انجام شد')
+        toast.success(SUCCESSFUL_LOGOUT, {...getTheme()})
         navigation('/auth/login')
     }
 

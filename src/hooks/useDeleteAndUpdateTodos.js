@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
 import { setTodosArchive, deleteTodo, setModalStatus, setIdForUpdate, toggleDoneTodo, setPagination, resetTodosState } from '../store/slices/todos'
 import { SUCCESSFUL_REMOVAL } from '../constants/responses'
 import { getTodosService, deleteTodoService, updateTodoService } from '../services/todos'
 import swal from '../modules/sweetAlert'
+import { getTheme } from '../modules/helperFunctions'
 
 export default function UseDeleteAndUpdateTodos (id) {
 
@@ -31,7 +33,7 @@ export default function UseDeleteAndUpdateTodos (id) {
 
             if (todos.length > 1) {
                 dispatch(setPagination({pageSize, currentPage, totalCount: totalCount - 1}))
-                swal.toast('success', SUCCESSFUL_REMOVAL)
+                toast.success(SUCCESSFUL_REMOVAL, {...getTheme()})
                 return
             }
 
@@ -41,7 +43,7 @@ export default function UseDeleteAndUpdateTodos (id) {
                 dispatch(resetTodosState())
                 dispatch(setTodosArchive({page, data, totalDocs, limit}))
                 setSearchParams({page: currentPage -1, filter: filterValue})
-                swal.toast('success', SUCCESSFUL_REMOVAL)
+                toast.success(SUCCESSFUL_REMOVAL, {...getTheme()})
             }
         } finally {
             setIsSubmit('')

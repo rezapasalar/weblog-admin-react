@@ -18,9 +18,9 @@ export default function DarkMode () {
 
     return (
         <>
-            <DarkSvg onClick={() => changeMode('osPreference')} className={`${mode === 'dark' ? 'block' : 'hidden'} h-[1.4rem] w-[1.4rem]`} />
+            <DarkSvg onClick={() => changeMode('osPreference')} className={`${mode === 'dark' ? 'block' : 'hidden'} h-[1.5rem] w-[1.5rem]`} />
             <LightSvg onClick={() => changeMode('dark')} className={`${mode === 'light' ? 'block' : 'hidden'} h-[1.4rem] w-[1.4rem]`} />
-            <PreferenceSvg onClick={() => changeMode('light')} className={`${mode === 'osPreference' ? 'block' : 'hidden'} h-[1.4rem] w-[1.4rem]`} />
+            <PreferenceSvg onClick={() => changeMode('light')} className={`${mode === 'osPreference' ? 'block' : 'hidden'} h-[1.5rem] w-[1.5rem]`} />
         </>
     )
 }
