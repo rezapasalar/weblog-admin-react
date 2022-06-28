@@ -7,6 +7,7 @@ export default function InputElement ({type = 'text', value = '', size = 'lg', w
             case 'md' : return 'text-md px-4 py-2'
             case 'lg' : return 'text-md px-5 py-[.7rem]'
             case 'xl' : return 'text-xl px-5 py-3'
+            default: return 'text-xs px-2 py-1'
         }
     }
 

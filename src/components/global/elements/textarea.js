@@ -7,6 +7,7 @@ export default function TextAreaElement ({rows = 5, value = '', size = 'lg', wid
             case 'md' : return 'text-md px-4 py-2'
             case 'lg' : return 'text-lg px-5 py-3'
             case 'xl' : return 'text-xl px-5 py-3'
+            default: return 'text-xs px-2 py-1'
         }
     }
 

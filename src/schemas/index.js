@@ -17,7 +17,7 @@ export const fields = {
     year: 'سال',
     month: 'ماه',
     day: 'روز',
-    isAdmin: 'نوع کاربری',
+    is_admin: 'نوع کاربری',
     gender: 'جنسیت',
     username: 'نام کاربری',
     fullname: 'نام و فامیل',
