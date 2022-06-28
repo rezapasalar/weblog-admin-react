@@ -4,7 +4,7 @@ export default function Label ({text, alert = null}) {
         switch (alert?.variant) {
             case 'success' : return 'bg-green-600'
             case 'danger' : return 'bg-red-600'
-            default: return 'bg-green-600'
+            default: return 'bg-white'
         }
     }
 
