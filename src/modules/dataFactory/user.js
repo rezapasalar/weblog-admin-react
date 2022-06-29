@@ -18,7 +18,7 @@ class UserFactory extends Factory {
             isAdmin: faker.datatype.number({min: 0, max: 1}),
             email: this.fakeEmail(),
             password: '12345678',
-            createdAt: Date.now(),
+            created_at: Date.now(),
         }
     }
 }

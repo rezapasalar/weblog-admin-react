@@ -51,7 +51,7 @@ export default function FormArticles () {
     const insert = () => {
         return new Promise(async (resolve, reject) => {
             try {
-                await createArticleService({...data, createdAt: Date.now()})
+                await createArticleService({...data, created_at: Date.now()})
                 dispatch(setFilterValue('all'))
                 const {data: {data: resData, meta: {totalDocs, limit, page}}} = await getArticlesService()
                 dispatch(resetArticlesState())

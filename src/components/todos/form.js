@@ -51,7 +51,7 @@ import { getTheme } from '../../modules/helperFunctions'
     const insert = () => {
         return new Promise(async (resolve, reject) => {
             try {
-                await createTodoService({...data, createdAt: Date.now()})
+                await createTodoService({...data, created_at: Date.now()})
                 dispatch(setFilterValue('all'))
                 const {data: {data: resData, meta: {totalDocs, limit, page}}} = await getTodosService()
                 dispatch(resetTodosState())

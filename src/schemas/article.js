@@ -7,7 +7,7 @@ export const initialData = {
     body: '',
     slug: '',
     status: 'draft', // draft - public
-    createdAt: ''
+    created_at: ''
 }
 
 export const articleSchema = () => { 

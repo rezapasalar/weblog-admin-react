@@ -4,7 +4,7 @@ import { DataSetWrap, ColumnGridWrap } from '../global/wraps'
 import SelectItemArticles from './selectItem'
 import ButtonLoading from '../global/loadings/button'
 
-export default function DataSetItemArticles ({id, title, description, status, createdAt}) {
+export default function DataSetItemArticles ({id, title, description, status, created_at}) {
 
     const {isSelect, setIsSelect, getIsSubmit, deleteHandler, updateHandler} = useDeleteAndUpdateArticles(id)
 
@@ -28,7 +28,7 @@ export default function DataSetItemArticles ({id, title, description, status, cr
 
             <DataSetWrap>
                 <div className="ml-1 opacity-60">تاریخ ثبت</div>
-                <div>{timestampToPersianDate(createdAt)}</div>
+                <div>{timestampToPersianDate(created_at)}</div>
             </DataSetWrap>
 
             <ColumnGridWrap gap="2" responsive="off">

@@ -8,6 +8,6 @@ export const updateArticleService = async data => await axios.put(`${route}/${da
 
 export const deleteArticleService = async articleId => await axios.delete(`${route}/${articleId}`)
 
-export const getArticlesService = async (page = 1, filter = null, sort = 'createdAt:-1') => await axios.get(`${route}?page=${page}${filter ? `&filter=${filter}` : ''}&sort=${sort}`)
+export const getArticlesService = async (page = 1, filter = null, sort = 'created_at:-1') => await axios.get(`${route}?page=${page}${filter ? `&filter=${filter}` : ''}&sort=${sort}`)
 
 export const searchArticleService = async (key, value) => await axios.get(`${route}?search=${key}:${value}`)

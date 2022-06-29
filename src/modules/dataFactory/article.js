@@ -15,7 +15,7 @@ class ArticleFactory extends Factory {
             body: faker.lorem.paragraph(20),
             slug: createSlug(sentences),
             status: faker.datatype.number({min: 0, max: 1}) ? 'draft' : 'public',
-            createdAt: Date.now(),
+            created_at: Date.now(),
         }
     }
 }

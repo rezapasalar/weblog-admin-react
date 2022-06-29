@@ -4,7 +4,7 @@ import { transfer } from '.'
 export const initialData = {
     text: '',
     done: 0,
-    createdAt: ''
+    created_at: ''
 }
 
 export const todoSchema = () => { 
