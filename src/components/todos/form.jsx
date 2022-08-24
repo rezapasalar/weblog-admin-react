@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { Formik, Form } from 'formik'
 
-import { FormTitle, FormButtonGroup, InputFormik, ButtonLoading } from '../../components/global/formik'
+import { FormTitle, ButtonGroup, InputFormik, ButtonLoading } from '../../components/global/formik'
 import { setTodosArchive, updateTodo, setIsShowModal, setIdForUpdate, setFilterValue, setPagination, resetTodosState } from '../../store/slices/todos'
 import { initialValues as initVals, todoSchema } from '../../schemas/todo'
 import { FORM_ERRORS, AXIOS_ERROR, SUCCESSFUL_OPERATION } from '../../constants/responses'
@@ -81,10 +81,10 @@ import { getTheme } from '../../modules/helperFunctions'
                     <Form>
                         <InputFormik name="text" />
                         
-                        <FormButtonGroup>
+                        <ButtonGroup>
                             <ButtonLoading onClick={() => checkFormError(Object.keys(errors).length)} isSubmit={isSubmitting} isSubmitEffect={isSubmitting} size="md" type="submit">{idForUpdate ? 'ویرایش' : 'ثبت'}</ButtonLoading>
                             <ButtonLoading isSubmit={false} onClick={cancelHandler} size="md" variant="danger">انصراف</ButtonLoading>
-                        </FormButtonGroup>
+                        </ButtonGroup>
                     </Form>
                 )}
             </Formik>  
@@ -106,7 +106,7 @@ import { setTodosArchive, updateTodo, setIsShowModal, setIdForUpdate, setFilterV
 import { initialValues, todoSchema } from '../../schemas/todo'
 import { FORM_ERRORS, AXIOS_ERROR, SUCCESSFUL_OPERATION } from '../../constants/responses'
 import Modal from '../global/modal/main'
-import { InputForm, ButtonLoading, FormTitle, FormButtonGroup } from '../global/form'
+import { InputForm, ButtonLoading, FormTitle, ButtonGroup } from '../global/form'
 import { getTodosService, createTodoService, updateTodoService } from '../../services/todos'
 import { getTheme } from '../../modules/helperFunctions'
 
@@ -185,10 +185,10 @@ import { getTheme } from '../../modules/helperFunctions'
 
                 <InputForm label="متن" keyname="text" value={data.text} error={errors.text} inputHandler={inputHandler} />
                 
-                <FormButtonGroup>
+                <ButtonGroup>
                     <ButtonLoading isSubmit={isSubmit} size="md" type="submit">{idForUpdate ? 'ویرایش' : 'ثبت'}</ButtonLoading>
                     <ButtonLoading isSubmit={isSubmit} isSubmitEffect onClick={cancelHandler} size="md" variant="danger">انصراف</ButtonLoading>
-                </FormButtonGroup>
+                </ButtonGroup>
 
             </form>
 

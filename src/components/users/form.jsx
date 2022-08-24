@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { Formik, Form } from 'formik'
 
-import { ColumnGridWrap, FormTitle, FormButtonGroup, InputFormik, SelectFormik, NameFamilyFormik, DateBirthFormik, PassPassConfirmFormik, ButtonLoading } from '../../components/global/formik'
+import { ColumnGridWrap, FormTitle, ButtonGroup, InputFormik, SelectFormik, NameFamilyFormik, DateBirthFormik, PassPassConfirmFormik, ButtonLoading } from '../../components/global/formik'
 import { setUsersArchive, updateUser, setIsShowModal, setIdForUpdate, setFilterValue, setPagination, resetUsersState } from '../../store/slices/users'
 import { initialValues as initVals, userSchema } from '../../schemas/user'
 import { FORM_ERRORS, AXIOS_ERROR, SUCCESSFUL_OPERATION } from '../../constants/responses'
@@ -89,10 +89,10 @@ import { getTheme } from '../../modules/helperFunctions'
                         </ColumnGridWrap>
                         <PassPassConfirmFormik />
                         
-                        <FormButtonGroup>
+                        <ButtonGroup>
                             <ButtonLoading onClick={() => checkFormError(Object.keys(errors).length)} isSubmit={isSubmitting} size="md" type="submit">{idForUpdate ? 'ویرایش' : 'ثبت'}</ButtonLoading>
                             <ButtonLoading isSubmit={isSubmitting} isSubmitEffect onClick={cancelHandler} size="md" variant="danger">انصراف</ButtonLoading>
-                        </FormButtonGroup>
+                        </ButtonGroup>
                     </Form>
                 )}
             </Formik>            
@@ -112,7 +112,7 @@ import { setUsersArchive, updateUser, setIsShowModal, setIdForUpdate, setFilterV
 import { initialValues, userSchema } from '../../schemas/user'
 import { FORM_ERRORS, AXIOS_ERROR, SUCCESSFUL_OPERATION } from '../../constants/responses'
 import Modal from '../global/modal/main'
-import { InputForm, SelectForm, DateBirthForm, ColumnGridWrap, ButtonLoading, HeaderForm, FooterForm } from '../global/form'
+import { InputForm, SelectForm, DateBirthForm, ColumnGridWrap, ButtonLoading, HeaderForm, ButtonGroup } from '../global/form'
 import { getUsersService, createUserService, updateUserService } from '../../services/users'
 import { getTheme } from '../../modules/helperFunctions'
 
@@ -210,10 +210,10 @@ import { getTheme } from '../../modules/helperFunctions'
                     <InputForm type="password" label="تایید رمز عبور" value={data.passwordConfirmation} keyname="passwordConfirmation" error={errors.passwordConfirmation} inputHandler={inputHandler} dir="ltr" />
                 </ColumnGridWrap>
 
-                <FooterForm>
+                <ButtonGroup>
                     <ButtonLoading isSubmit={isSubmit} size="md" type="submit">{idForUpdate ? 'ویرایش' : 'ثبت'}</ButtonLoading>
                     <ButtonLoading isSubmit={isSubmit} isSubmitEffect onClick={cancelHandler} size="md" variant="danger">انصراف</ButtonLoading>
-                </FooterForm>
+                </ButtonGroup>
                 
             </form>
             

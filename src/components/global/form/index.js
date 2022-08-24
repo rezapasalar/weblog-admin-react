@@ -7,7 +7,7 @@ import DateBirth from './dateBirth'
 import Button from '../elements/button'
 import ButtonL from '../loadings/button'
 import Title from './title'
-import ButtonGroup from './buttonGroup'
+import ButtonG from '../elements/buttonGroup'
 
 export const ColumnGridWrap = ColumnGrid
 export const InputForm = Input
@@ -18,4 +18,4 @@ export const DateBirthForm = DateBirth
 export const ButtonElement = Button
 export const ButtonLoading = ButtonL
 export const FormTitle = Title
-export const FormButtonGroup = ButtonGroup
+export const ButtonGroup = ButtonG

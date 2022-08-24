@@ -9,7 +9,7 @@ import PassPassConfirm from './passPassConfirm'
 import Button from '../elements/button'
 import ButtonL from '../loadings/button'
 import Title from '../form/title'
-import ButtonGroup from '../form/buttonGroup'
+import ButtonG from '../elements/buttonGroup'
 
 export const ColumnGridWrap = ColumnGrid
 export const InputFormik = Input
@@ -22,4 +22,4 @@ export const PassPassConfirmFormik = PassPassConfirm
 export const ButtonElement = Button
 export const ButtonLoading = ButtonL
 export const FormTitle = Title
-export const FormButtonGroup = ButtonGroup
+export const ButtonGroup = ButtonG

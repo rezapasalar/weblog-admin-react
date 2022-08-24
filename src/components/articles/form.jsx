@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { Formik, Form } from 'formik'
 
-import { FormTitle, FormButtonGroup, InputFormik, SelectFormik, CKEditorFormik, TextareaFormik, ButtonLoading } from '../../components/global/formik'
+import { FormTitle, ButtonGroup, InputFormik, SelectFormik, CKEditorFormik, TextareaFormik, ButtonLoading } from '../../components/global/formik'
 import { setArticlesArchive, updateArticle, setIsShowModal, setIdForUpdate, setFilterValue, setPagination, resetArticlesState } from '../../store/slices/articles'
 import { initialValues as initVals, articleSchema } from '../../schemas/article'
 import { FORM_ERRORS, AXIOS_ERROR, SUCCESSFUL_OPERATION } from '../../constants/responses'
@@ -83,10 +83,10 @@ export default function FormArticles () {
                         <CKEditorFormik name="body" values={values} errors={errors} setValues={setValues} />
                         <SelectFormik options={[{value: 'draft', label: 'پیش نویس'}, {value: 'public', label: 'انتشار'}]} name="status" />
 
-                        <FormButtonGroup>
+                        <ButtonGroup>
                             <ButtonLoading onClick={() => checkFormError(Object.keys(errors).length)} isSubmit={isSubmitting} isSubmitEffect={isSubmitting} size="md" type="submit">{idForUpdate ? 'ویرایش' : 'ثبت'}</ButtonLoading>
                             <ButtonLoading isSubmit={false} onClick={cancelHandler} size="md" variant="danger">انصراف</ButtonLoading>
-                        </FormButtonGroup>
+                        </ButtonGroup>
                     </Form>
                 )}
             </Formik> 
@@ -107,7 +107,7 @@ import { setArticlesArchive, updateArticle, setIsShowModal, setIdForUpdate, setF
 import { initialValues, articleSchema } from '../../schemas/article'
 import { FORM_ERRORS, AXIOS_ERROR, SUCCESSFUL_OPERATION } from '../../constants/responses'
 import Modal from '../global/modal/main'
-import { InputForm, SelectForm, TextAreaForm, CKEditorForm, ColumnGridWrap, ButtonLoading, FormTitle, FormButtonGroup } from '../global/form'
+import { InputForm, SelectForm, TextAreaForm, CKEditorForm, ColumnGridWrap, ButtonLoading, FormTitle, ButtonGroup } from '../global/form'
 import { getArticlesService, createArticleService, updateArticleService } from '../../services/articles'
 import { getTheme } from '../../modules/helperFunctions'
 
@@ -200,10 +200,10 @@ export default function FormArticles () {
                     <SelectForm label="وضعیت مقاله" keyname="status" value={data.status} options={[{value: 'draft', label: 'پیش نویس'}, {value: 'public', label: 'انتشار'}]} error={errors.status} inputHandler={inputHandler} />
                 </ColumnGridWrap>
 
-                <FormButtonGroup>
+                <ButtonGroup>
                     <ButtonLoading isSubmit={isSubmit} size="md" type="submit">{idForUpdate ? 'ویرایش' : 'ثبت'}</ButtonLoading>
                     <ButtonLoading isSubmit={isSubmit} isSubmitEffect onClick={cancelHandler} size="md" variant="danger">انصراف</ButtonLoading>
-                </FormButtonGroup>
+                </ButtonGroup>
                 
             </form>
             
