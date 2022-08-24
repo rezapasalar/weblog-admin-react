@@ -29,6 +29,8 @@ import Profile from './profile'
 import Light from './light'
 import Dark from './dark'
 import Preference from './preference'
+import Checked from './checked'
+import ArrowTop from './arrowTop'
 
 export const LogoSvg = Logo
 export const LoginSvg = Login
@@ -61,3 +63,5 @@ export const ProfileSvg = Profile
 export const LightSvg = Light
 export const DarkSvg = Dark
 export const PreferenceSvg = Preference
+export const CheckedSvg = Checked
+export const ArrowTopSvg = ArrowTop

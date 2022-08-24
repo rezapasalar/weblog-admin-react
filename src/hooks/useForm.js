@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 export default function UseForm (initialData) {
     
@@ -8,7 +8,7 @@ export default function UseForm (initialData) {
 
     const [isSubmit, setIsSubmit] = useState('')
 
-    const inputHandler = (key, value, type = 'string') => setData({...data, [key]: type === 'number' ? Number(value) : value})
+    const inputHandler = useCallback((key, value, type = 'string') => setData(prevState => ({...prevState, [key]: type === 'number' ? Number(value) : value})), [data[Object.keys(data)]])
 
     const mapYupErrors = (errors) => {
         let errorsObj = {}

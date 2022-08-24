@@ -1,10 +1,7 @@
-import { object, string, boolean, ref } from 'yup'
-import { messages, transfer } from '.'
+import { object, string, boolean, number, ref } from 'yup'
 import { searchUserService } from '../services/users'
 
-const {email, confirmed} = messages
-
-export const initialData = {
+export const initialValues = {
     is_admin: 0,
     name: '',
     family: '',
@@ -21,30 +18,15 @@ export const initialData = {
 
 export const userSchema = (type = 'create') => { 
     return object({
-        name: 
-            string()
-            .required(transfer('required', 'name'))
-        ,family:
-            string()
-            .required(transfer('required', 'family'))
-        ,day: 
-            string()
-            .required(transfer('required', 'day'))
-        ,month: 
-            string()
-            .required(transfer('required', 'month'))
-        ,year: 
-            string()
-            .required(transfer('required', 'year'))
-        ,is_admin:
-            boolean()
-            .required(transfer('required', 'isAdmin'))
-        ,email:
-            string()
-            .required(transfer('required', 'email'))
-            .email(email)
+        name: string().required(),
+        family: string().required(),
+        day: number().required().min(1).max(31),
+        month: number().required().min(1).max(12),
+        year: number().required().min(1300).max(new Date().getFullYear()),
+        is_admin: boolean().required(),
+        email: string().required().email()
             .test({
-                message: () => transfer('duplicate', 'email'),
+                message: () => 'فیلد ایمیل تکراری است',
                 test: async (email, {parent: {id}}) => {
                     if (type === 'create') {
                         const {data: {data}} = await searchUserService('email', email)
@@ -54,29 +36,17 @@ export const userSchema = (type = 'create') => {
                         return data.length && data[0].id !== id ? false : true
                     }                
                 }
-            })
-        ,password:
+            }),
+        password:
             type === 'create'
-                ?
-                    string()
-                    .required(transfer('required', 'password'))
-                    .min(8, transfer('min', 'password', 8))
-                    .max(32, transfer('max', 'password', 32))
-                :
-                    string()
-                    .nullable(true)
-                    .transform((o, c) => o === "" ? null : c)
-                    .min(8, transfer('min', 'password', 8))
-                    .max(32, transfer('max', 'password', 32))
-        ,passwordConfirmation:
+                ? string().required().min(8).max(32)
+                : string().nullable(true).transform((o, c) => o === "" ? null : c).min(8).max(32),
+        passwordConfirmation:
             type === 'create'
-                ?
-                    string()
-                    .oneOf([ref('password'), null], confirmed)
-                :
-                    string()
-                    .test('passwordConfirmation', confirmed, function (value) {
-                        return this.parent.password != null ? this.parent.password === value : true
+                ? string().oneOf([ref('password')])
+                : string()
+                    .test('passwordConfirmation', function (value) {
+                        return this.parent.password !== null ? this.parent.password === value : true
                     })
     })
 }

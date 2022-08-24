@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     todosArchive: [],
     todosCurrentPage: [],
-    modalStatus: false,
+    isShowModal: false,
     idForUpdate: null,
     filterValue: 'all',
     selectedRows: [],
@@ -40,7 +40,7 @@ const todosSlice = createSlice({
             state.todosCurrentPage = state.todosCurrentPage.map(item => item.id === id ? {...item, done: !item.done} : item)
             state.todosArchive = state.todosArchive.map(item => item.page === state.pagination.currentPage).map(item => item.id === id ? {...item, done: !item.done} : item)
         },
-        setModalStatus: (state, {payload: status}) => {state.modalStatus = status},
+        setIsShowModal: (state, {payload: status}) => {state.isShowModal = status},
         setIdForUpdate: (state, {payload: id}) => {state.idForUpdate = id},
         setFilterValue: (state, {payload: value}) => {state.filterValue = value},
         setSelectedRows: (state, {payload: id}) => {typeof id !== 'number' ? state.selectedRows = [] : state.selectedRows.includes(id) ? state.selectedRows = state.selectedRows.filter(item => item !== id) : state.selectedRows.push(id)},
@@ -56,7 +56,7 @@ export const {
     deleteTodo,
     updateTodo,
     toggleDoneTodo,
-    setModalStatus,
+    setIsShowModal,
     setIdForUpdate,
     setFilterValue,
     setSelectedRows,

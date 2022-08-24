@@ -1,7 +1,6 @@
 import { object, string } from 'yup'
-import { transfer } from '.'
 
-export const initialData = {
+export const initialValues = {
     title: '',
     description: '',
     body: '',
@@ -12,19 +11,9 @@ export const initialData = {
 
 export const articleSchema = () => { 
     return object({
-        title:
-            string()
-            .required(transfer('required', 'title'))
-        ,description:
-            string()
-            .required(transfer('required', 'description'))
-            .min(20, transfer('min', 'description', 20))
-            .max(150, transfer('max', 'description', 150))
-        ,body:
-            string()
-            .required(transfer('required', 'body'))
-        ,status:
-            string()
-            .required(transfer('required', 'status'))
+        title: string().required(),
+        description: string().required().min(20).max(150),
+        body: string().required().min(20),
+        status: string().required()
     })
 }

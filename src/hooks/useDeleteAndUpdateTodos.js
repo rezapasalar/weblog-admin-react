@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
-import { setTodosArchive, deleteTodo, setModalStatus, setIdForUpdate, toggleDoneTodo, setPagination, resetTodosState } from '../store/slices/todos'
+
+import { setTodosArchive, deleteTodo, setIsShowModal, setIdForUpdate, toggleDoneTodo, setPagination, resetTodosState } from '../store/slices/todos'
 import { SUCCESSFUL_REMOVAL } from '../constants/responses'
 import { getTodosService, deleteTodoService, updateTodoService } from '../services/todos'
 import swal from '../modules/sweetAlert'
@@ -20,7 +21,7 @@ export default function UseDeleteAndUpdateTodos (id) {
 
     const [, setSearchParams] = useSearchParams()
 
-    const getIsSubmit = (value) => isSubmit === value ? false : isSubmit !== '' ? 'false' : ''
+    const getIsSubmit = (value = '') => (isSubmit === value && value.length) ? true : false
 
     const deleteHandler = async () => {
         try {
@@ -63,8 +64,8 @@ export default function UseDeleteAndUpdateTodos (id) {
 
     const updateHandler = () => {
         dispatch(setIdForUpdate(id))
-        dispatch(setModalStatus(true))
+        dispatch(setIsShowModal(true))
     }
 
-    return {isSelect, setIsSelect, getIsSubmit, deleteHandler, toggleDoneHandler, updateHandler}
+    return {isSelect, setIsSelect, getIsSubmit, deleteHandler: useCallback(deleteHandler, []), updateHandler: useCallback(updateHandler, []), toggleDoneHandler: useCallback(toggleDoneHandler, [])}
 }

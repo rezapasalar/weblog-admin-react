@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     articlesArchive: [],
     articlesCurrentPage: [],
-    modalStatus: false,
+    isShowModal: false,
     idForUpdate: null,
     filterValue: 'all',
     selectedRows: [],
@@ -36,7 +36,7 @@ const articlesSlice = createSlice({
             state.articlesCurrentPage = state.articlesCurrentPage.map(item => item.id === article.id ? article : item)
             state.articlesArchive = state.articlesArchive.map(item => item.page === state.pagination.currentPage).map(item => item.id === article.id ? article : item)
         },
-        setModalStatus: (state, {payload: status}) => {state.modalStatus = status},
+        setIsShowModal: (state, {payload: status}) => {state.isShowModal = status},
         setIdForUpdate: (state, {payload: id}) => {state.idForUpdate = id},
         setFilterValue: (state, {payload: value}) => {state.filterValue = value},
         setSelectedRows: (state, {payload: id}) => {typeof id !== 'number' ? state.selectedRows = [] : state.selectedRows.includes(id) ? state.selectedRows = state.selectedRows.filter(item => item !== id) : state.selectedRows.push(id)},
@@ -51,7 +51,7 @@ export const {
     setArticlesCurrentPage,
     deleteArticle,
     updateArticle,
-    setModalStatus,
+    setIsShowModal,
     setIdForUpdate,
     setFilterValue,
     setSelectedRows,

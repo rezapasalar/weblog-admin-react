@@ -1,8 +1,5 @@
 import faker from '@faker-js/faker'
 
-/**
- * This class is for making and removing fake data.
- */
 class DataFactory {
 
     $locale = 'fa'
@@ -11,11 +8,7 @@ class DataFactory {
 
     $count = 10
 
-    /**
-     * Batch registration of data in local storage or end api.
-     * @param to This parameter contains the storage driver.
-     */
-     create () {
+    create () {
         return new Promise(async resolve => {
             await this.loopForCreate()
             return resolve()

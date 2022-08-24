@@ -1,8 +1,5 @@
 import swal from 'sweetalert2'
 
-/**
- * This class is responsible for presenting the properties of sweet alert
- */
 class SweetAlert {
     toast (type, title, timer = 3000, position = 'bottom-end') {
         swal.fire({

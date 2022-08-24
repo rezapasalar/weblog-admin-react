@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
-import { setArticlesArchive, deleteArticle, setModalStatus, setIdForUpdate, setPagination, resetArticlesState } from '../store/slices/articles'
+
+import { setArticlesArchive, deleteArticle, setIsShowModal, setIdForUpdate, setPagination, resetArticlesState } from '../store/slices/articles'
 import { SUCCESSFUL_REMOVAL } from '../constants/responses'
 import { getArticlesService, deleteArticleService } from '../services/articles'
 import swal from '../modules/sweetAlert'
@@ -20,7 +21,7 @@ export default function UseDeleteAndUpdateArticles (id) {
 
     const [, setSearchParams] = useSearchParams()
 
-    const getIsSubmit = (value) => isSubmit === value ? value : isSubmit !== '' ? 'false' : ''
+    const getIsSubmit = (value = '') => (isSubmit === value && value.length) ? true : false
 
     const deleteHandler = async () => {
         try {
@@ -52,8 +53,8 @@ export default function UseDeleteAndUpdateArticles (id) {
 
     const updateHandler = () => {
         dispatch(setIdForUpdate(id))
-        dispatch(setModalStatus(true))
+        dispatch(setIsShowModal(true))
     }
 
-    return {isSelect, setIsSelect, getIsSubmit, deleteHandler, updateHandler}
+    return {isSelect, setIsSelect, getIsSubmit, deleteHandler: useCallback(deleteHandler, []), updateHandler: useCallback(updateHandler, [])}
 }
