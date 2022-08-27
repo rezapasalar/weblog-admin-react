@@ -7,7 +7,7 @@ import { setIsLoading } from '../../store/slices/global'
 import todoFactory from '../../modules/dataFactory/todo'
 import swal from '../../modules/sweetAlert'
 import { getTodosService, deleteTodoService } from '../../services/todos'
-import { SUCCESSFUL_OPERATION, SUCCESSFUL_REMOVAL } from '../../constants/responses'
+import { SUCCESSFUL_OPERATION, SUCCESSFUL_REMOVAL, AXIOS_ERROR } from '../../constants/responses'
 import TitleAndViewType from '../global/titleAndViewType'
 import ButtonElement from '../global/elements/button'
 import { getTheme } from '../../modules/helperFunctions'
@@ -61,6 +61,8 @@ export default function HeaderTodos ({viewType, changeViewType}) {
             dispatch(setTodosArchive({page, data, totalDocs, limit}))
             window.scrollTo({top: 0, behavior: 'smooth'})
             toast.success(SUCCESSFUL_OPERATION, {...getTheme()})
+        } catch (e) {
+            toast.error(AXIOS_ERROR, {...getTheme()})
         } finally {
             dispatch(setIsLoading(false))
         }

@@ -32,7 +32,7 @@ export default function FormArticles () {
 
     const submitHandler = async (values, {setErrors}) => {
         try {
-            idForUpdate ? await update(values) : await insert(values)
+            idForUpdate ? await update(values) : await create(values)
             cancelHandler()
             toast.success(SUCCESSFUL_OPERATION, {...getTheme()})
         } catch (errors) {
@@ -40,7 +40,7 @@ export default function FormArticles () {
         }
     }
 
-    const insert = values => {
+    const create = values => {
         return new Promise(async (resolve, reject) => {
             try {
                 await createArticleService({...values, created_at: Date.now()})

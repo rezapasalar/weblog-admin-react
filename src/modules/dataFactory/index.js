@@ -9,16 +9,24 @@ class DataFactory {
     $count = 10
 
     create () {
-        return new Promise(async resolve => {
-            await this.loopForCreate()
-            return resolve()
+        return new Promise(async (resolve, reject) => {
+            try {
+                await this.loopForCreate()
+                return resolve()
+            } catch (e) {
+                return reject(e)
+            }
         })
     }
 
     async loopForCreate () {
-        faker.locale = this.$locale
-        for (let i = 0; i < this.$count; i++) {
-            await this.$axios(this.defination())
+        try {
+            faker.locale = this.$locale
+            for (let i = 0; i < this.$count; i++) {
+                await this.$axios(this.defination())
+            }
+        } catch (e) {
+            return Promise.reject(e)
         }
     }
 

@@ -40,7 +40,7 @@ export default function UsersPage () {
             try {
                 dispatch(setIsLoading(true))
                 const filter = searchParams.get('filter') ? searchParams.get('filter') : filterValue
-                const {data: {data, meta: {totalDocs, limit}}} = await getUsersService(page, filter === 'all' || filter === 'status:all' ? null : filter)
+                const {data: {data, meta: {totalDocs, limit}}} = await getUsersService(page, (filter === 'all' || filter === 'status:all') ? null : filter)
                 dispatch(setUsersArchive({page, data, totalDocs, limit}))
                 window.scrollTo({top: 0, behavior: 'smooth'})
             } finally {

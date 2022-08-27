@@ -7,7 +7,7 @@ import { setIsLoading } from '../../store/slices/global'
 import articleFactory from '../../modules/dataFactory/article'
 import swal from '../../modules/sweetAlert'
 import { getArticlesService, deleteArticleService } from '../../services/articles'
-import { SUCCESSFUL_OPERATION, SUCCESSFUL_REMOVAL } from '../../constants/responses'
+import { SUCCESSFUL_OPERATION, SUCCESSFUL_REMOVAL, AXIOS_ERROR } from '../../constants/responses'
 import TitleAndViewType from '../global/titleAndViewType'
 import ButtonElement from '../global/elements/button'
 import { getTheme } from '../../modules/helperFunctions'
@@ -61,6 +61,8 @@ export default function HeaderArticles ({viewType, changeViewType}) {
             dispatch(setArticlesArchive({page, data, totalDocs, limit}))
             window.scrollTo({top: 0, behavior: 'smooth'})
             toast.success(SUCCESSFUL_OPERATION, {...getTheme()})
+        } catch (e) {
+            toast.error(AXIOS_ERROR, {...getTheme()})
         } finally {
             dispatch(setIsLoading(false))
         }
